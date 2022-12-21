@@ -2,11 +2,13 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 from tqdm import tqdm_notebook as tqdm
+import sys, os
+repo_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 st.header('docstring per sch block')
 st.subheader("choose a cell, then read and update its documentation")
 st.write("if some port is alias of another port, you can write another_port@another_block for example vin_p@ipn5brk2adctop_adc_top")
-log='/nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/jupyter_notebooks/streamlit/sch_docstring.csv'
+log=repo_path + '/streamlit/sch_docstring.csv'
 df=pd.read_csv(log).fillna('')
 # df=df.sort_values(['cell','port_direction','port_name'])
 
@@ -19,7 +21,7 @@ if cell:
     st.sidebar.info('about this block:')
     # st.sidebar.info(f'''{relevant.query('port_name=="description"').description.values[0]}''')
     st.sidebar.success(relevant.query('port_name=="description"').description.values[0])
-    st.sidebar.image('/nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/jupyter_notebooks/streamlit/docstring.jpg', use_column_width=True)
+    st.sidebar.image(repo_path + '/streamlit/docstring.jpg', use_column_width=True)
 
 
 

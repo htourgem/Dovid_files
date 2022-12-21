@@ -14,6 +14,7 @@ st.set_page_config(layout="wide")
 
 pd.options.display.max_rows=200
 usage_log_path=os.path.dirname(os.path.abspath(__file__))+'/xa_running_time.log'
+repo_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 class timer:
     def __init__(self):
@@ -123,7 +124,7 @@ st.write('you can put multiple folders and logs seperated by space, comma, new l
 # st.write('the script will look for \*.log files only!')
 log_name = st.sidebar.text_input('the name of the log file to look for. you can use reges', value = '.*\.log')
 log_name=log_name.replace('"','').replace("'",'')
-st.sidebar.image('/nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/jupyter_notebooks/streamlit/xa_running_time.jpg', use_column_width=True)
+st.sidebar.image(repo_path + '/streamlit/xa_running_time.jpg', use_column_width=True)
 
 
 

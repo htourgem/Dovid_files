@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import re
 import plotly.express as px
+import os
+repo_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def get_table_download_link(df):
     """Generates a link allowing the data in a given pandas dataframe to be downloaded
@@ -23,10 +25,10 @@ def convert_si(si):
         return si
 
 st.header('build xa spice tb')
-st.sidebar.image('/nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/streamlit/xa_spice_tb.jpg', use_column_width=True)
+st.sidebar.image(repo_path + '/streamlit/xa_spice_tb.jpg', use_column_width=True)
 demo_data = st.sidebar.checkbox('use demo data')
 if demo_data:
-    demo_spice='/nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/streamlit/demo_data/xa_spice_tb/ipn5brk2top_lane_top.sp'
+    demo_spice=repo_path + '/streamlit/demo_data/xa_spice_tb/ipn5brk2top_lane_top.sp'
     sp = open(demo_spice).read().replace('\n+','')
     top='ipn5brk2top_lane_top'
     st.warning(f'running demo with spice {demo_spice}')
@@ -60,7 +62,7 @@ with st.beta_expander('default values table and example'):
     st.write(values_df)
     
 if demo_data:
-    demo_values = '/nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/streamlit/demo_data/xa_spice_tb/values.csv'
+    demo_values = repo_path + '/streamlit/demo_data/xa_spice_tb/values.csv'
     values = pd.read_csv(demo_values)
     st.warning(f'running demo with values from {demo_values}')
 else:

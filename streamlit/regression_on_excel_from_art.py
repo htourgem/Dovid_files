@@ -7,11 +7,12 @@ import streamlit as st
 import plotly.express as px
 from sklearn.ensemble import RandomForestRegressor
 import datetime
-import os
 from sys import platform
 import cufflinks
 from glob import glob
 st.set_page_config(layout="wide")
+import sys, os
+repo_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 debug_from_win=False
 plot_width=1000
@@ -72,7 +73,7 @@ def get_signal_fft(sr): # input sr with value vs time. return magnitude and phas
 
 st.sidebar.markdown('**_SODA_** - Second Order Displayed Analysis')
 if not debug_from_win:
-    st.sidebar.image('/nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/streamlit/regression_on_excel_from_art.jpg', use_column_width=True)
+    st.sidebar.image(repo_path + '/streamlit/regression_on_excel_from_art.jpg', use_column_width=True)
 
 current_date=datetime.datetime.now().strftime('%d-%m-%Y-%H_%M_%S')
 
@@ -85,11 +86,11 @@ st.header('---plots from multi tests---')
 st.subheader('this app is parsing downloaded excel with multiple tests from ART and plotting cross tests')
 is_under_development=st.sidebar.checkbox('development code')
 
-demo_excel=st.sidebar.selectbox('or load demo data', ['']+[i.split('/')[-1] for i in glob('/nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/jupyter_notebooks/streamlit/demo_data/regression_on_excel_from_art/demo_*.xlsx')])
+demo_excel=st.sidebar.selectbox('or load demo data', ['']+[i.split('/')[-1] for i in glob(repo_path + 'streamlit/demo_data/regression_on_excel_from_art/demo_*.xlsx')])
 if demo_excel!='':
     st.error('loading demo data!')
     st.sidebar.error('loading demo data!')
-    uploaded_file=f'/nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/jupyter_notebooks/streamlit/demo_data/regression_on_excel_from_art/{demo_excel}'
+    uploaded_file=repo_path + f'/streamlit/demo_data/regression_on_excel_from_art/{demo_excel}'
 else:
     uploaded_file=st.sidebar.file_uploader('upload xlsx/csv file that you downloaded from ART (at csv remove intel confidential first row)', type=['xlsx', 'csv'])
 

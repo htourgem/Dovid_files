@@ -2,6 +2,8 @@ import streamlit as st
 import datetime
 import re
 from collections import OrderedDict
+import sys, os
+repo_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def find_replace():
     f = []
@@ -10,7 +12,7 @@ def find_replace():
     while True:
         elements = len(f)
 #         st.sidebar.success(f'find replace {elements+1}:')
-        st.sidebar.image('/nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/jupyter_notebooks/streamlit/line.jpg')
+        st.sidebar.image(repo_path + '/streamlit/line.jpg')
         f.append(st.sidebar.text_input(f'find {elements+1}' , key=elements))
         r.append(st.sidebar.text_input(f'replace {elements+1}' , key=elements))
         if f[-1]=="": # if last input is not empty, add new inputs
@@ -22,7 +24,7 @@ def find_replace():
     return fr
 
 st.header('session generator')
-st.sidebar.image('/nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/jupyter_notebooks/streamlit/wv_dve_sessions_for_brk_flc.jpg', use_column_width=True)
+st.sidebar.image(repo_path + '/streamlit/wv_dve_sessions_for_brk_flc.jpg', use_column_width=True)
 
 # inputs:
 prefix = st.text_input('write sara prefix')

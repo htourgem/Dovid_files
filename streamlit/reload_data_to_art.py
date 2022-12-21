@@ -6,6 +6,7 @@ import sys, os
 import io
 from contextlib import redirect_stdout
 from print_to_streamlit import st_stdout, st_stderr
+repo_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 st.set_page_config(layout="wide")
 
@@ -14,7 +15,7 @@ def get_session_name():
     productname = st.sidebar.selectbox('productname', ['Falcon','BRK_GEN2','BRK_GEN1', 'GDR_BRK'])
     return sessiondescription, productname
 
-sys.path.append('/nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/jupyter_notebooks/brk_gen1/Automation/PostProcess/upload_to_art')
+sys.path.append(repo_path + '/upload_to_art/')
 from simple_art_uploader import simple_art_dict, upload_to_ogre
 
         

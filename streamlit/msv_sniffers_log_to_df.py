@@ -1,7 +1,8 @@
 # BTW you have jupyter notebook like this one, called convert msv log to df at upload to art
 
-import sys
-sys.path.append('/nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/analysisPP/brk_gen1/Automation/PostProcess/upload_to_art/')
+import sys, os
+repo_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(repo_path + '/upload_to_art/')
 # from imp import reload 
 # import parse_msv_report
 # reload(parse_msv_report) 
@@ -58,7 +59,7 @@ def usage_logger(log_path):
 
 st.sidebar.info(f"tool last update {datetime.datetime.fromtimestamp(os.path.getmtime(os.path.abspath(__file__))).strftime('%d-%m-%Y-%H:%M:%S')}")
 
-st.sidebar.image('/nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/streamlit/msv_sniffers_log_to_df.jpg', use_column_width=True)
+st.sidebar.image(repo_path + '/streamlit/msv_sniffers_log_to_df.jpg', use_column_width=True)
 
 class Strct: pass
 global_info = Strct()
@@ -158,7 +159,7 @@ def prints_on_df(df, file_date):
 
 def upload_data_to_art(username, rawdata_str, session_name, extra_dict=dict(), project_name='BRK_GEN2'):
     import sys
-    sys.path.append('/nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/jupyter_notebooks/brk_scope/PostProcess/upload_to_art')
+    sys.path.append(repo_path + '/upload_to_art/')
     from simple_art_uploader import simple_art_dict, upload_to_ogre
     
     import io

@@ -3,6 +3,8 @@ from glob import glob
 import pandas as pd
 pd.options.display.max_colwidth=0
 pd.options.display.max_columns=0
+import sys, os
+repo_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 def add_space_in_string(string_input, delimiter=' ', delimiter_every=4):
@@ -60,7 +62,7 @@ def upload_interface_return_table():
     st.header('soc files to verilog code')
     st.info('drag xlsm files that contains the registers addresses and content, and create verilog/python content from it')
     st.sidebar.markdown('soc converter')
-    st.sidebar.image('/nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/jupyter_notebooks/streamlit/soc_to_verilog.jpg', use_column_width=True)
+    st.sidebar.image(repo_path + '/streamlit/soc_to_verilog.jpg', use_column_width=True)
 
     our_format_files = st.file_uploader('our format soc online xlsm files', type=None, accept_multiple_files=True, key=['xlsm'])
     soc_files = st.file_uploader('soc online xlsx files', type=None, accept_multiple_files=True, key=['xlsx'])

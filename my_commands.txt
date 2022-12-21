@@ -1,33 +1,37 @@
 #voila
 ssh iapp258
-/p/cto/dav/py3.6.3/bin/python3.6 -m jupyter notebook --no-browser --ip `hostname -f` --port=10355 --NotebookApp.base_url='/dgottesm/' /nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools &
-/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m voila /nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/voila/ --no-browser --base_url='/scripts/' --port=12312 &
+cd /nfs/iil/disks/hip_ckt/users/dgottesm/analysis_and_tools/voila_streamlit/Dovid_files
+setenv VOILA_STREAMLIT_TOOLS `pwd`
+/p/cto/dav/py3.6.3/bin/python3.6 -m jupyter notebook --no-browser --ip `hostname -f` --port=10355 --NotebookApp.base_url='/dgottesm/' /nfs/iil/disks/hip_ckt/users/dgottesm/analysis_and_tools &
+/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m voila $VOILA_STREAMLIT_TOOLS/voila/ --no-browser --base_url='/scripts/' --port=12312 &
 
 #streamlit:
 ssh iapp258
-/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit  run  /nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/streamlit/p4_compare_tags.py                              --server.port  8503  &
-/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit  run  /nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/streamlit/duplicate_folder.py                             --server.port  8510  &
-/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit  run  /nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/streamlit/xa_running_time.py                              --server.port  8511  &
-/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit  run  /nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/streamlit/handle_virtuoso_sv.py                           --server.port  8512  &
-/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit  run  /nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/streamlit/compare_blocks_and_ports_at_spice_netlists.py   --server.port  8513  &
-/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit  run  /nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/streamlit/sch_docstring.py                                --server.port  8514  &
-/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit  run  /nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/streamlit/msv_sniffers_log_to_df.py                       --server.port  8515  &
-/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit  run  /nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/streamlit/verilog_compilation.py                          --server.port  8518  &
-/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit  run  /nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/streamlit/code_coloring.py                                --server.port  8520  &
-/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit  run  /nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/streamlit/wv_dve_sessions_for_brk_flc.py                  --server.port  8521  &
-/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit  run  /nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/streamlit/noise_characterization.py                       --server.port  8522  &
-/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit  run  /nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/streamlit/regression_on_excel_from_art.py                 --server.port  8523  &
-/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit  run  /nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/streamlit/reload_data_to_art.py                           --server.port  8524  &
-/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit  run  /nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/streamlit/regs_handler.py                                 --server.port  8525  &
-/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit  run  /nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/streamlit/compare_blocks_and_ports_at_verilog_netlists.py --server.port  8526  &
-/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit  run  /nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/streamlit/browse_verilog_files.py                         --server.port  8527  &
-/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit  run  /nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/streamlit/xa_spice_tb.py                                  --server.port  8528  &
-/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit run /nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/voila/igraph_stremlit.py --server.port  8501  &
+cd /nfs/iil/disks/hip_ckt/users/dgottesm/analysis_and_tools/voila_streamlit/Dovid_files
+setenv VOILA_STREAMLIT_TOOLS `pwd`
+/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit run $VOILA_STREAMLIT_TOOLS/streamlit/p4_compare_tags.py                              --server.port  8503  &
+/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit run $VOILA_STREAMLIT_TOOLS/streamlit/duplicate_folder.py                             --server.port  8510  &
+/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit run $VOILA_STREAMLIT_TOOLS/streamlit/xa_running_time.py                              --server.port  8511  &
+/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit run $VOILA_STREAMLIT_TOOLS/streamlit/handle_virtuoso_sv.py                           --server.port  8512  &
+/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit run $VOILA_STREAMLIT_TOOLS/streamlit/compare_blocks_and_ports_at_spice_netlists.py   --server.port  8513  &
+/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit run $VOILA_STREAMLIT_TOOLS/streamlit/sch_docstring.py                                --server.port  8514  &
+/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit run $VOILA_STREAMLIT_TOOLS/streamlit/msv_sniffers_log_to_df.py                       --server.port  8515  &
+/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit run $VOILA_STREAMLIT_TOOLS/streamlit/verilog_compilation.py                          --server.port  8518  &
+/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit run $VOILA_STREAMLIT_TOOLS/streamlit/code_coloring.py                                --server.port  8520  &
+/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit run $VOILA_STREAMLIT_TOOLS/streamlit/wv_dve_sessions_for_brk_flc.py                  --server.port  8521  &
+/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit run $VOILA_STREAMLIT_TOOLS/streamlit/noise_characterization.py                       --server.port  8522  &
+/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit run $VOILA_STREAMLIT_TOOLS/streamlit/regression_on_excel_from_art.py                 --server.port  8523  &
+/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit run $VOILA_STREAMLIT_TOOLS/streamlit/reload_data_to_art.py                           --server.port  8524  &
+/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit run $VOILA_STREAMLIT_TOOLS/streamlit/regs_handler.py                                 --server.port  8525  &
+/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit run $VOILA_STREAMLIT_TOOLS/streamlit/compare_blocks_and_ports_at_verilog_netlists.py --server.port  8526  &
+/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit run $VOILA_STREAMLIT_TOOLS/streamlit/browse_verilog_files.py                         --server.port  8527  &
+/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit run $VOILA_STREAMLIT_TOOLS/streamlit/xa_spice_tb.py                                  --server.port  8528  &
+/nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit run $VOILA_STREAMLIT_TOOLS/voila/igraph_stremlit.py --server.port  8501  &
 # deprecated /nfs/iil/proj/cto/dav/py3.6.3/bin/python3.6 -m streamlit  run  /nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/streamlit/soc_to_verilog.py                               --server.port  8525  &
 # then you can access it by iapp258.iil.intel.com:8510
 # to kill them all, you need to type line by line:
 #   foreach n ( 1 2 3 4 7 11 )
-# or
+# or
 #   foreach n ( `seq 4 15` )
 #   kill %$n
 #   end

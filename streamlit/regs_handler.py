@@ -4,6 +4,8 @@ import numpy as np
 pd.options.display.max_colwidth=0
 pd.options.display.max_columns=0
 st.set_page_config(layout="wide")
+import sys, os
+repo_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def add_space_in_string(string_input, delimiter=' ', delimiter_every=4):
     return delimiter.join(string_input[i:i + delimiter_every] for i in range(0, len(string_input), delimiter_every))
@@ -318,13 +320,13 @@ def bad_characters(s):
                                                     
 st.header('reg excels to different formats')
 st.sidebar.markdown('regs handler')
-st.sidebar.image('/nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/streamlit/regs_handler.jpg', use_column_width=True)
+st.sidebar.image(repo_path + '/streamlit/regs_handler.jpg', use_column_width=True)
 st.sidebar.info('drag xlsx file that contains the registers addresses and content, and create verilog/python/xml content from it')
 # loading data
 demo_table = st.sidebar.checkbox('take demo data')
 if demo_table:
     st.warning('demo data')
-    uploaded = '/nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/streamlit/demo_data/regs_handler_demo_data.xlsx'
+    uploaded = repo_path + '/streamlit/demo_data/regs_handler_demo_data.xlsx'
 else:
     st.sidebar.markdown('First - Choose a Project!')
     uploaded = st.sidebar.file_uploader('our format soc online xlsm files', type=None, accept_multiple_files=False, key=['xlsx'])

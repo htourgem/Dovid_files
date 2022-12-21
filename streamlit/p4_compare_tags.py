@@ -4,6 +4,8 @@ import streamlit as st
 import subprocess
 import marshal
 import base64
+import sys, os
+repo_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 st.header('compare block versions in different tags')
 
@@ -109,8 +111,8 @@ if first_label=='@head' or first_label=='@latest':
     first_label='#head'
 if second_label=='@head' or second_label=='@latest':
     second_label='#head'
-st.sidebar.image('/nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/jupyter_notebooks/streamlit/p4_compare.jpg', use_column_width=True)
-# st.sidebar.image('/nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/jupyter_notebooks/streamlit/p4_compare.jpg')
+st.sidebar.image(repo_path+'/streamlit/p4_compare.jpg', use_column_width=True)
+# st.sidebar.image(repo_path + '/streamlit/p4_compare.jpg')
 
 if first_label==second_label:
     st.write('first and second labels are the same - please enter differnet tags at the slidebar')
@@ -152,8 +154,8 @@ else:
 #     st.write('hi')
 #     st.write(first_label_p4_output.query('block.str.contains("ipn5brk2ffe_res_p_analog6_vref_inv_v3")'))
 #     st.write(second_label_p4_output.query('block.str.contains("ipn5brk2ffe_res_p_analog6_vref_inv_v3")'))
-#     first_label_p4_output.to_csv('/nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/jupyter_notebooks/streamlit/a.csv')
-#     second_label_p4_output.to_csv('/nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/jupyter_notebooks/streamlit/b.csv')
+#     first_label_p4_output.to_csv(repo_path+'/streamlit/a.csv')
+#     second_label_p4_output.to_csv(repo_path+'/streamlit/b.csv')
 
     # dropping common columns, and taking them from second_label_p4_output
     merge=pd.merge(first_label_p4_output, second_label_p4_output, how='outer', on=['block','block_type','file_name'], suffixes=[f'_{first_label}', f'_{second_label}'])

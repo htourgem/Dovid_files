@@ -4,6 +4,8 @@ import streamlit as st
 import datetime
 import re
 from time import sleep
+import sys, os
+repo_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 class timer:
     def __init__(self):
@@ -17,7 +19,7 @@ class timer:
 
 st.header('check if bmods compiles')
 st.sidebar.markdown('**verilog compilation**')
-st.sidebar.image('/nfs/iil/disks/hip_ana_sim_01/dgottesm/analysis_and_tools/jupyter_notebooks/streamlit/verilog_compilation.jpg', use_column_width=True)
+st.sidebar.image(repo_path + '/streamlit/verilog_compilation.jpg', use_column_width=True)
 simulate = st.sidebar.checkbox('also simulate')
 
 verilog_std_folder = glob('/nfs/iil/disks/ams_regruns/dkl/users/lisrael1/msv/temp_del/verilog_helper/std/*')
